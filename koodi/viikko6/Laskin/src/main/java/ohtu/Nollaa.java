@@ -12,25 +12,28 @@ import javax.swing.JTextField;
  * @author Viliina
  */
 public class Nollaa implements Komento {
-
+    
     private Sovelluslogiikka sovellus;
     private JTextField tuloskentta;
     private JTextField syotekentta;
-
+    private int edellinen;
+    
     Nollaa(Sovelluslogiikka sovellus, JTextField tuloskentta, JTextField syotekentta) {
         this.sovellus = sovellus;
         this.tuloskentta = tuloskentta;
         this.syotekentta = syotekentta;
     }
-
+    
     @Override
     public void suorita() {
+        this.edellinen = sovellus.tulos();
         sovellus.nollaa();
         tuloskentta.setText("" + sovellus.tulos());
     }
-
+    
     @Override
     public void peru() {
+        tuloskentta.setText("" + edellinen);
     }
-
+    
 }
